@@ -1,22 +1,22 @@
 import React from 'react';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import { Link } from 'react-router-dom';
 
 import { Container, Wrapper } from './Style';
 import Logo from '../../assets/logo.svg';
 
-const LoginPage = () => {
+const RegisterPage = () => {
     return (
         <Container>
             <img src={Logo} alt="mercado"/>
             <Wrapper>
-                <h2>Inicio de sesión</h2>
-                <LoginForm />
+                <h2>Registro</h2>
+                <RegisterForm />
                 <p>Ayudanos a crecer en todo el Perú</p>
-                <Link className="link" to="/new-account">¿No tienes una cuenta? Registrese aquí!</Link>
+                <Link className="link" to="/login">¿Ya tienes una cuenta? Inicia sesión aquí!</Link>
             </Wrapper>
         </Container>
     )
 }
 
-export default LoginPage;
+export default RegisterPage;
