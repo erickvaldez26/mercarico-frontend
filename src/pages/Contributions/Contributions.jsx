@@ -1,20 +1,19 @@
 import React from 'react';
 import Navbar from '../../components/Navbar/Navbar';
-import Cities from '../../components/Cities/Cities';
-import Map from '../../components/Map/Map';
+import ItemsContri from '../../components/ItemContri/ItemContri';
 
 import { Container, Content } from './style';
 
-const MainPage = () => {
+const Contributions = () => {
     return (
         <Container>
             <Navbar />
             <Content>
-                <Cities />
-                <Map />
+                <p className="title">Tus contribuciones</p>
+                <ItemsContri />
             </Content>
         </Container>
     )
 }
 
-export default MainPage;
+export default Contributions;

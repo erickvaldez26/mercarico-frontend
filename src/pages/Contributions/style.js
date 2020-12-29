@@ -11,6 +11,12 @@ export const Content = styled.div`
     flex-direction: column;
     padding: 0 20%;
 
+    .title{
+        margin-top: 2.4rem;
+        margin-bottom: .6rem;
+        font-size: 20px;
+    }
+
     @media (max-width: 620px){
         padding: 0 12%;
     }

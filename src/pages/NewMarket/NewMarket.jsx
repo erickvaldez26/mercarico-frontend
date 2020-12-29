@@ -1,20 +1,19 @@
 import React from 'react';
 import Navbar from '../../components/Navbar/Navbar';
-import Cities from '../../components/Cities/Cities';
-import Map from '../../components/Map/Map';
+import NewMarketForm from '../../components/NewMarketForm/NewMarketForm';
 
 import { Container, Content } from './style';
 
-const MainPage = () => {
+const NewMarket = () => {
     return (
         <Container>
             <Navbar />
             <Content>
-                <Cities />
-                <Map />
+                <p>Registrar un mercado</p>
+                <NewMarketForm />
             </Content>
         </Container>
     )
 }
 
-export default MainPage;
+export default NewMarket;
