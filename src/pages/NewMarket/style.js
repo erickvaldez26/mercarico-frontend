@@ -9,12 +9,11 @@ export const Container = styled.div`
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    align-content: center;
     padding: 0 20%;
 
-    @media (max-width: 620px){
-        padding: 0 12%;
-    }
-    @media (max-width: 420px){
-        padding: 0 4%;
+    p{
+        margin: 2rem 0 1rem 0;
     }
 `;
