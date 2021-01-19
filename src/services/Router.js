@@ -7,14 +7,16 @@ import MainPage from '../pages/Main/MainPage';
 import AddMarket from '../pages/NewMarket/NewMarket';
 import Contributions from '../pages/Contributions/Contributions';
 
+import PrivateRouter from './PrivateRouter';
+
 const Router = () => {
     return (
         <Switch>
-            <Route path="/login" component={LoginPage}/>
-            <Route path="/new-account" component={RegisterPage}/>
-            <Route path="/add-market" component={AddMarket}/>
-            <Route path="/contributions" component={Contributions}/>
-            <Route path="/" component={MainPage}/>
+            <Route exact path="/login" component={LoginPage}/>
+            <Route exact path="/new-account" component={RegisterPage}/>
+            <PrivateRouter exact path="/add-market" component={AddMarket}/>
+            <PrivateRouter exact path="/contributions" component={Contributions}/>
+            <Route exact path="/" component={MainPage}/>
         </Switch>
     )
 }

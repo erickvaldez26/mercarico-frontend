@@ -1,14 +1,17 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import Route from './services/Router';
 
+import LoginProvider from './context/LoginContext';
+
 import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Route/>
-    </Router>
-  );
+    <LoginProvider>
+      <Router>
+        <Route/>
+      </Router>
+    </LoginProvider>
+  )
 }
-
 export default App;
