@@ -3,6 +3,8 @@ import Navbar from '../../components/Navbar/Navbar';
 import Cities from '../../components/Cities/Cities';
 import Map from '../../components/Map/Map';
 
+import MainProvider from '../../context/MainContext';
+
 import { Container, Content } from './style';
 
 const MainPage = () => {
@@ -10,8 +12,10 @@ const MainPage = () => {
         <Container>
             <Navbar />
             <Content>
-                <Cities />
-                <Map />
+                <MainProvider>
+                    <Cities />
+                    <Map />
+                </MainProvider>
             </Content>
         </Container>
     )

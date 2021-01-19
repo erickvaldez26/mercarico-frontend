@@ -1,16 +1,51 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from "react";
+import {useHistory} from 'react-router-dom';
+import  { LoginContext }  from "../../context/LoginContext";
 
 import { ContentForm } from './style';
 
 const LoginForm = () => {
-    return (
-        <ContentForm>
-            <input type="email" placeholder="Correo electrónico"/>
-            <input type="password" placeholder="Contraseña"/>
+    const history = useHistory();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-            <button>Ingresar</button>
-        </ContentForm>
-    )
+    const { handleLogin, user } = useContext(LoginContext);
+
+    useEffect(() => {
+      if(!!user) {
+        history.push('/add-market');
+      }
+    },[user])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        handleLogin(email, password);
+    }
+    
+    const changeEmail = (e) => {
+        setEmail(e.target.value);
+    }
+    const changePassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+    return (
+      <ContentForm onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Correo electrónico"
+          onChange={changeEmail}
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          onChange={changePassword}
+        />
+
+        <button type="submit">Ingresar</button>
+      </ContentForm>
+    );
 }
 
-export default LoginForm
+export default LoginForm;
