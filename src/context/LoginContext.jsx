@@ -10,7 +10,7 @@ const LoginProvider = ( props ) => {
         return null
     });
 
-    const handleLogin = async (email, password) => {
+    const handleLogin = async ( email, password ) => {
       try {
         const temp = await fire
           .auth()
@@ -25,18 +25,30 @@ const LoginProvider = ( props ) => {
       }
     };
 
-    const handleRegister = () => {
-        fire.auth().createUserWithEmailAndPassword().catch(err => {
-            var errorCode = err.code;
-            var errorMessage = err.message;
-            console.log(`${errorCode} + ${errorMessage}`);
-        })
+    const handleRegister = async (name, email, password) => {
+      console.log(name);
+      console.log(email);
+      console.log(password);
+      /* try{
+        const temp = await fire
+          .auth()
+          .createUserWithEmailAndPassword(email, password);
+        setUser(temp.user.uid);
+         window.localStorage.setItem(
+          "@Mercario:uid",
+          JSON.stringify(temp.user.uid)
+        );
+        console.log(temp);
+      } catch(err){
+        console.log(err);
+      } */
     }
 
     const handleSignOut = () => {
         fire.auth().signOut();
+        window.localStorage.removeItem("@Mercario:uid");
+        setUser();
     }
-
    
     return (
         <LoginContext.Provider
