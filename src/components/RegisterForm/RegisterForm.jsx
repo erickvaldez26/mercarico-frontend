@@ -18,9 +18,8 @@ const RegisterForm = () => {
         }
     }, [user])
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-
         handleRegister(name, email, password);
     }
 

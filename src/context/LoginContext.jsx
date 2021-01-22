@@ -4,10 +4,17 @@ import fire from '../services/Firebase';
 export const LoginContext = createContext();
 
 const LoginProvider = ( props ) => {
+  const db = fire.firestore();
     const [user, setUser] = useState(() => {
         const usu = window.localStorage.getItem("@Mercario:uid");
         if (usu) return JSON.parse(usu)
         return null
+    });
+    const [datauser, setDataUser] = useState({
+      name: '',
+      email: '',
+      date_create: new Date(),
+      uid: '',
     });
 
     const handleLogin = async ( email, password ) => {
@@ -26,22 +33,29 @@ const LoginProvider = ( props ) => {
     };
 
     const handleRegister = async (name, email, password) => {
-      console.log(name);
-      console.log(email);
-      console.log(password);
-      /* try{
+      try{
         const temp = await fire
           .auth()
           .createUserWithEmailAndPassword(email, password);
-        setUser(temp.user.uid);
-         window.localStorage.setItem(
-          "@Mercario:uid",
-          JSON.stringify(temp.user.uid)
-        );
-        console.log(temp);
+        
+        if(temp){
+          setUser(temp.user.uid);
+          window.localStorage.setItem(
+            "@Mercario:uid",
+            JSON.stringify(temp.user.uid)
+          );
+          setDataUser({
+            ...datauser,
+            name: name,
+            email: email,
+            uid: temp.user.uid
+          })
+          await db.collection('users').doc(temp.user.uid).set(datauser);
+        }
+         
       } catch(err){
         console.log(err);
-      } */
+      }
     }
 
     const handleSignOut = () => {
