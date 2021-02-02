@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.ul`
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 0.8rem;
-`;
 export const Item = styled.li`
     width: 210px;
     height: 250px;
@@ -20,6 +15,9 @@ export const HeadItem = styled.div`
         width: 100%;
         height: 100%;
         display: block;
+        flex-shrink: 0;
+        object-fit: cover;
+        object-position: center;
     }
 `;
 export const FooterItem = styled.div`

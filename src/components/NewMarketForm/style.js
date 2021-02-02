@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContentForm = styled.div`
+export const ContentForm = styled.form`
     width: 340px;
     display: flex;
     flex-direction: column;
@@ -38,18 +38,17 @@ export const ContentForm = styled.div`
         margin-top: 10px;
         margin-bottom: 8px;
     }
-`;
-export const Camera = styled.div`
-    display: flex;
-    flex-direction: row;
 
     .TouchCam{
-        width: 60px;
+        width: 100%;
         height: 45px;
         display: flex;
+        background-color: var(--inputs);
         justify-content: center;
         align-content: center;
         align-items: center;
-        background-color: #535353;
     }
+`;
+export const Camera = styled.input`
+    display: none;
 `;

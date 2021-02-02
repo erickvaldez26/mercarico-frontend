@@ -6,10 +6,13 @@ import { ContentForm } from './style';
 
 const RegisterForm = () => {
     const history = useHistory();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [registeruser, setRegisterUser] = useState({
+        name: '',
+        email: '',
+        password: ''
+    })
 
+    const { name, email, password } = registeruser;
     const {user, handleRegister} = useContext(LoginContext);
 
     useEffect(() => {
@@ -18,37 +21,38 @@ const RegisterForm = () => {
         }
     }, [user])
 
-    const handleSubmit = (e) => {
+    const handleFormSubmit = e => {
         e.preventDefault();
+
         handleRegister(name, email, password);
     }
 
-    const changeName = e => {
-        setName(e.target.value);
-    }
-    const changeEmail = e => {
-        setEmail(e.target.value);
-    }
-    const changePassword = e => {
-        setPassword(e.target.value);
+    const handleInputs = e => {
+        setRegisterUser({
+            ...registeruser,
+            [e.target.name]: e.target.value
+        })
     }
 
     return (
-        <ContentForm onSubmit={handleSubmit}>
+        <ContentForm onSubmit={handleFormSubmit}>
             <input 
+                name="name"
                 type="text" 
                 placeholder="Nombre completo" 
-                onChange={changeName}
+                onChange={handleInputs}
             />
-            <input 
+            <input
+                name="email"
                 type="email"
                 placeholder="Correo electrónico"
-                onChange={changeEmail}
+                onChange={handleInputs}
             />
-            <input 
+            <input
+                name="password"
                 type="password" 
                 placeholder="Contraseña"
-                onChange={changePassword}
+                onChange={handleInputs}
             />
 
             <button type="submit">Registrarme</button>

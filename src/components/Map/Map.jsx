@@ -10,12 +10,8 @@ const Map = () => {
 
     const { geopoint } = useContext(MainContext);
 
-    const click = () => {
-        console.log(geopoint);
-    }
-
     return (
-        <Container onClick={click}>
+        <Container>
             <Mapex
                 center={[geopoint.longitud, geopoint.latitud]}
                 zoom={8}
